@@ -1,0 +1,74 @@
+<?php
+// Archivo: generar-perfiles.php
+// Script para generar automáticamente perfiles de usuario
+
+// Incluir archivo de inicialización
+require_once 'includes/init.php';
+
+// Verificar si el usuario es administrador
+if (!is_logged_in() || !is_admin()) {
+    show_message("Acceso denegado. Debes ser administrador para ejecutar este script.", "error");
+    redirect("index.php");
+    exit;
+}
+
+// Directorio donde se guardarán los perfiles
+$perfiles_dir = "perfiles";
+
+// Crear el directorio si no existe
+if (!file_exists($perfiles_dir)) {
+    mkdir($perfiles_dir, 0777, true);
+}
+
+// Obtener todos los usuarios
+$query = "SELECT id_usuario, nombre FROM usuarios";
+$result = $conexion->query($query);
+
+if (!$result) {
+    show_message("Error al obtener usuarios: " . $conexion->error, "error");
+    redirect("index.php");
+    exit;
+}
+
+$total = 0;
+$creados = 0;
+$errores = 0;
+
+// Procesar cada usuario
+while ($row = $result->fetch_assoc()) {
+    $total++;
+    $id_usuario = $row['id_usuario'];
+    $nombre = $row['nombre'];
+    
+    // Nombre del archivo de perfil
+    $perfil_file = $perfiles_dir . "/perfil-" . $id_usuario . ".php";
+    
+    // Verificar si ya existe
+    if (file_exists($perfil_file)) {
+        continue; // Saltar si ya existe
+    }
+    
+    // Contenido del archivo de perfil
+    $contenido = '<?php
+// Perfil de usuario generado automáticamente para ' . $nombre . ' (ID: ' . $id_usuario . ')
+// Redirigir al perfil centralizado
+header("Location: perfil.php?id=' . $id_usuario . '");
+exit;
+';
+    
+    // Guardar el archivo
+    if (file_put_contents($perfil_file, $contenido) !== false) {
+        $creados++;
+    } else {
+        $errores++;
+    }
+}
+
+// Mostrar resultados
+$mensaje = "Proceso completado. Total de usuarios: $total. ";
+$mensaje .= "Perfiles creados: $creados. ";
+$mensaje .= "Errores: $errores.";
+
+show_message($mensaje, $errores > 0 ? "warning" : "success");
+redirect("index.php");
+?>
