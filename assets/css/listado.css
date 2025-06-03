@@ -1,0 +1,225 @@
+/* Archivo: assets/css/listado.css */
+.listado-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.listado-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.listado-title {
+    font-family: "Bangers", cursive;
+    font-size: 3rem;
+    color: white;
+    text-shadow: 3px 3px 0 #0066cc, 5px 5px 0 black;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.tipo-selector {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.tipo-link {
+    font-family: "Bangers", cursive;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tipo-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tipo-link.active {
+    background-color: #0066cc;
+    border-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.buscador {
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+.buscador input {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    border: 3px solid #0066cc;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.buscador input:focus {
+    outline: none;
+    border-color: #ff3366;
+    box-shadow: 0 5px 20px rgba(255, 51, 102, 0.4);
+}
+
+.listado-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.contenido-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 3px solid black;
+}
+
+.contenido-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.contenido-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.contenido-imagen-container {
+    position: relative;
+    height: 0;
+    padding-bottom: 150%; /* Proporción 2:3 para pósters */
+    overflow: hidden;
+}
+
+.contenido-imagen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.contenido-card:hover .contenido-imagen {
+    transform: scale(1.05);
+}
+
+.contenido-calificacion {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    text-align: center;
+}
+
+.estrellas {
+    color: #ffcc00;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 0 black;
+}
+
+.contenido-info {
+    padding: 1.2rem;
+    background-color: white;
+}
+
+.contenido-titulo {
+    font-family: "Bangers", cursive;
+    font-size: 1.5rem;
+    color: black;
+    text-shadow: 1px 1px 0 #0066cc;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.contenido-generos {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.contenido-descripcion {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.no-contenido {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.no-contenido p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.comic-button {
+    display: inline-block;
+    background-color: #0066cc;
+    color: white;
+    font-family: "Bangers", cursive;
+    font-size: 1.3rem;
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+    transition: all 0.2s ease;
+    border: 2px solid black;
+}
+
+.comic-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+    .listado-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .listado-title {
+        font-size: 2.5rem;
+    }
+    
+    .tipo-link {
+        font-size: 1.2rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .listado-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}

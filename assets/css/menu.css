@@ -1,0 +1,160 @@
+/* menu.css - Estilos específicos para el menú con mayor especificidad */
+
+.navbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 1rem 2rem !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+    position: relative !important;
+    z-index: 1000 !important;
+    width: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.navbar .logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    flex-shrink: 0 !important; /* Evita que el logo se comprima */
+}
+
+.navbar .logo img {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
+
+.navbar .logo-text {
+    font-size: 2rem !important;
+    color: white !important;
+    text-shadow: 3px 3px 0 #ff3366 !important;
+    letter-spacing: 1px !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    white-space: nowrap !important;
+}
+
+.navbar .logo-text:hover {
+    color: #ff3366 !important;
+    text-shadow: 2px 2px 0 #000 !important;
+    transform: scale(1.05) !important;
+}
+
+/* Estilos para el menú hamburguesa */
+.navbar .hamburger-btn {
+    display: none !important;
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 1.8rem !important;
+    cursor: pointer !important;
+    z-index: 1001 !important;
+    padding: 0.5rem !important;
+    margin-left: auto !important; /* Empuja el botón a la derecha */
+}
+
+/* Menú de navegación */
+.navbar .dropdown-menu {
+    display: flex !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+}
+
+.navbar .nav-link {
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 1.3rem !important;
+    text-shadow: 2px 2px 0 #0066cc !important;
+    transition: transform 0.2s !important;
+    padding: 0.5rem 1rem !important;
+    position: relative !important;
+    display: block !important;
+}
+
+.navbar .nav-link:hover {
+    transform: scale(1.1) !important;
+}
+
+.navbar .nav-link::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 3px !important;
+    background-color: #ff3366 !important;
+    transition: width 0.3s !important;
+}
+
+.navbar .nav-link:hover::after {
+    width: 100% !important;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 1.2rem !important;
+    }
+    
+    .navbar .logo-text {
+        font-size: 1.5rem !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 200px !important;
+    }
+    
+    /* Ajustes para navegación móvil */
+    .navbar .hamburger-btn {
+        display: block !important;
+    }
+
+    .navbar .dropdown-menu {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        background-color: rgba(0, 0, 0, 0.9) !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        transition: max-height 0.5s ease !important;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5) !important;
+        width: 100% !important;
+    }
+
+    .navbar .dropdown-menu.active {
+        max-height: 300px !important;
+        padding: 1rem 0 !important;
+    }
+
+    .navbar .dropdown-menu .nav-link {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 1rem 0 !important;
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .navbar .logo img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .navbar .logo-text {
+        font-size: 1.2rem !important;
+        max-width: 150px !important;
+    }
+    
+    .navbar .dropdown-menu .nav-link {
+        font-size: 1.3rem !important;
+        padding: 0.8rem 0 !important;
+    }
+}

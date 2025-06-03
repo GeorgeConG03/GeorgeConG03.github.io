@@ -1,0 +1,334 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bangers', cursive;
+    background: linear-gradient(to bottom right, #00c6ff, #0072ff);
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(0, 200, 255, 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+}
+
+.post-image {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.file-upload {
+  margin: 10px 0;
+}
+
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.logo-text {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 3px 3px 0 #ff3366;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 0 #0066cc;
+    transition: transform 0.2s;
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
+.nav-link:hover {
+    transform: scale(1.1);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #ff3366;
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: rgba(51, 51, 51, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Botones de viñeta estilo cómic */
+.comic-button {
+    display: block;
+    background-color: white;
+    color: black;
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    padding: 0.8rem 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+    transform: skew(-5deg);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #0066cc;
+}
+
+.comic-button:hover {
+    transform: skew(-5deg) scale(1.05);
+    box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.7);
+}
+
+.comic-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+    border-radius: 5px;
+}
+
+/* Formulario de publicación */
+.post-form {
+    margin-bottom: 2rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+}
+
+.post-form textarea.comic-input {
+    width: 100%;
+    padding: 0.8rem;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    border: 3px solid #000;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    background-color: white;
+    color: black;
+    resize: vertical;
+}
+
+.post-form textarea.comic-input::placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+.file-upload {
+    margin-bottom: 1rem;
+}
+
+.file-upload label.comic-button {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    font-family: 'Bangers', cursive;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.file-upload label.comic-button:hover {
+    transform: skew(-5deg) scale(1.05);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.post-form button.comic-button {
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post-form button.comic-button:hover {
+    transform: skew(-5deg) scale(1.05);
+    box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.7);
+}
+
+/* Lista de posts */
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff3366;
+}
+
+.post-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.post-username {
+    font-size: 1.2rem;
+    color: black;
+    text-shadow: 1px 1px 0 #0066cc;
+}
+
+.post-user-handle {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.post-content {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: black;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.post-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.small-button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Pie de página */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 0 #0066cc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+.post-image {
+    max-width: 90vw; /* Máximo ancho: 90% del ancho de la pantalla */
+    max-height: 50vh; /* Máximo alto: 50% del alto de la pantalla */
+    min-width: 150px;
+    min-height: 150px;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+    object-fit: cover;
+}
